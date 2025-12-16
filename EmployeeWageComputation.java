@@ -1,5 +1,6 @@
 import java.util.Random;
 public class EmployeeWageComputation {
+    // Class Constants
     public static final int IS_ABSENT = 0;
     public static final int IS_FULL_TIME = 1;
     public static final int IS_PART_TIME = 2;
@@ -8,12 +9,20 @@ public class EmployeeWageComputation {
     public static final int PART_TIME_HOUR = 8;
     public static final int MAX_WORKING_DAYS = 20;
     public static final int MAX_WORKING_HOURS = 100;
+    // Class Variables
+    private static int totalMonthlyWage;
+    private static int totalWorkingHours;
+    private static int totalWorkingDays;
     public static void main(String[] args) {
         System.out.println("Welcome to Employee Wage Computation Program");
+        computeEmployeeWage();
+    }
+    // Class Method to compute employee wage
+    public static void computeEmployeeWage() {
         Random random = new Random();
-        int totalMonthlyWage = 0;
-        int totalWorkingHours = 0;
-        int totalWorkingDays = 0;
+        totalMonthlyWage = 0;
+        totalWorkingHours = 0;
+        totalWorkingDays = 0;
         while (totalWorkingDays < MAX_WORKING_DAYS && totalWorkingHours < MAX_WORKING_HOURS) {
             totalWorkingDays++;
             int empType = random.nextInt(3);
@@ -31,7 +40,6 @@ public class EmployeeWageComputation {
                     break;
             }
             totalWorkingHours += workingHours;
-
             if (totalWorkingHours > MAX_WORKING_HOURS) {
                 workingHours = workingHours - (totalWorkingHours - MAX_WORKING_HOURS);
                 totalWorkingHours = MAX_WORKING_HOURS;
